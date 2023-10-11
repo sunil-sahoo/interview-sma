@@ -1,0 +1,23 @@
+name: Digital Ocean Deploy
+
+on:
+  pull_request:
+    branches: 
+      - main
+    types: [closed]
+
+jobs:
+  backend-deploy:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+    steps:            
+      - name: Deploy package to Droplet 
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.FHOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /root/interview_sma
+            sudo docker-compose pull && sudo docker-compose up -d
+          
