@@ -7,7 +7,7 @@ on:
     types: [closed]
 
 jobs:
-  backend-deploy:
+  deploy:
     if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:            
@@ -19,5 +19,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /root/interview_sma
-            sudo docker-compose pull && sudo docker-compose up -d
+            docker-compose pull && docker-compose up -d
           
