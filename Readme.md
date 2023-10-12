@@ -19,3 +19,4 @@
 2. SSL of port 443 is set to passthrough as the SSL is enabled on droplet level as nginx SSL
 3. Always redirect from HTTP to HTTPS is enabled for more security
 
+Adding a new line here for test
